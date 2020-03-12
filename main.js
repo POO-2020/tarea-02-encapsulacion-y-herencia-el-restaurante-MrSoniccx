@@ -18,15 +18,23 @@ class Main{
         this.elementoPedido2 = new ElementoPedido(this.producto2, 1)
         this.direccion = new Direcion("Manzanas", 524, 12, "Garbantez", 255781, "Colima", "Colima")
         this.cliente = new Cliente("Pepe Pepa Peparin", this.direccion, 3125486691)
-        this.pedido = new Pedido(new Fecha(new Date(2018,5,25)), new Tiempo(11,23,"am"), this.cliente)
-        this.pedido.agregarElemento(this.elementoPedido)
-        this.pedido.agregarElemento(this.elementoPedido2)
-        this.pedido.agregarElemento(this.elementoPedido2)
+        
+        let datoRestaurante = {
+            nombre: "Spag Heddy",
+            telefono: 3126758175,
+            direccion: this.direccion
+        }
 
-        this.restaurante = new Restaurante("Spag Heddy", 3126758175, this.direccion)
+        this.restaurante = new Restaurante(datoRestaurante)
 
+        let datosPedido = {
+            fecha: new Fecha(new Date(2018,5,25)),
+            hora: new Tiempo(11,23,"am"),
+            cliente: this.cliente,
+            numeroPedido: 10
+        }
 
-        let datosCliente = {
+        let datosClienteFrecuente = {
             nombre: "Juanito Alcachofaz fafafa",
             direccion: new Direcion("Peras", 220, 7, "VillaSenior", 244876, "Colima", "Colima"),
             telefono: 3125847294,
@@ -34,12 +42,15 @@ class Main{
             fecha: new Fecha(new Date(2017,8,24))
         }
 
-        this.clienteFrecuente = new ClienteFrecuente(datosCliente)
+        this.pedido = new Pedido(datosPedido)
+
+        this.clienteFrecuente = new ClienteFrecuente(datosClienteFrecuente)
         
+        this.pedido.agregarElemento(this.elementoPedido)
+        this.pedido.agregarElemento(this.elementoPedido2)
+        this.pedido.agregarElemento(this.elementoPedido2)
+
     }
-    
-    testPrecio()
-    { console.log(this.precio.getPrecio())}
 
     testElementoProducto()
     { console.log(this.elementoPedido.getDescripcion())}
@@ -65,7 +76,7 @@ class Main{
 
     testRestaurante()
     {
-        this.restaurante.registrarProducto(this.producto)
+        console.log(this.restaurante.registrarProducto(this.producto))
         this.restaurante.registrarProducto(this.producto2)
         this.restaurante.registrarPedido(this.pedido)
 
@@ -75,7 +86,6 @@ class Main{
 }
 
 let tester = new Main()
-tester.testPrecio();
 tester.testElementoProducto();
 tester.testDireccion();
 tester.testCliente();

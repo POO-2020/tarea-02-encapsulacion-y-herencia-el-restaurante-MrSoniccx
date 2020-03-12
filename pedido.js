@@ -1,10 +1,13 @@
 import Precio from "./precio.js";
 
 export default class Pedido {
-    constructor(fecha, hora, cliente) {
+
+
+    constructor({fecha, hora, cliente, numeroPedido}) {
         this._fecha = fecha;
         this._hora = hora;
         this._cliente = cliente;
+        this._numeroPedido = numeroPedido;
         this._elementosPedidos = [];
     }
     agregarElemento(elemento) {
