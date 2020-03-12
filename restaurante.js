@@ -1,3 +1,5 @@
+
+
 export default class Restaurante{
 
     constructor(nombre, telefono, direccion)
@@ -13,7 +15,16 @@ export default class Restaurante{
         this._productos.push(producto)
     }
     registrarPedido(pedido){
-        this._pedidos.push(pedido)
+       
+       let found = this._pedidos.find(ped => ped._esIgualA(pedido))
+      
+       console.log(found)
+        if(found != undefined){return false}
+        else
+        {this._pedidos.push(pedido)
+        return true}
+
+        
     }
 
     listarProductos(){
@@ -27,5 +38,15 @@ export default class Restaurante{
         this._pedidos.forEach( (ped, i) => {
             console.log(`(${i+1}) ~ ${ped.getResumen()}`)
         })
+    }
+    
+    buscarPedido(pedido){
+
+    }
+    eliminarPedido(pedido){
+
+    }
+    modificarPedido(pedido){
+
     }
 }

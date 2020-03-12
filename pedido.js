@@ -42,4 +42,15 @@ export default class Pedido {
     getResumen() {
         return `${this._fecha.getFecha()} ${this._hora.getFormato12()} - ${this.getNumeroElementos()} elementos con ${this.getProductos()} productos - total ${this.getCostoTotal()}`;
     }
+
+    getNumeroPedido(){
+        return this._numeroPedido
+    }
+
+    _esIgualA(pedido){
+        console.log(pedido.getNumeroPedido())
+        console.log(this._numeroPedido)
+        if(pedido.getNumeroPedido() == this._numeroPedido){ return true}
+        else {return false}
+    }
 }

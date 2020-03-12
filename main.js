@@ -76,9 +76,10 @@ class Main{
 
     testRestaurante()
     {
-        console.log(this.restaurante.registrarProducto(this.producto))
+        this.restaurante.registrarProducto(this.producto)
         this.restaurante.registrarProducto(this.producto2)
-        this.restaurante.registrarPedido(this.pedido)
+        console.log(this.restaurante.registrarPedido(this.pedido))
+        console.log(this.restaurante.registrarPedido(this.pedido))
 
         this.restaurante.listarProductos()
         this.restaurante.listarPedidos()
