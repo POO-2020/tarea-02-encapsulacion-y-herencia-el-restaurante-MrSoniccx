@@ -17,4 +17,8 @@ export default class Precio{
         
         return (`${formatterDolar.format(this._valor)}`)
     }
+
+    getValor(){
+        return this._valor
+    }
 }
