@@ -18,6 +18,7 @@ class Main{
         this.elementoPedido2 = new ElementoPedido(this.producto2, 1)
         this.direccion = new Direcion("Manzanas", 524, 12, "Garbantez", 255781, "Colima", "Colima")
         this.cliente = new Cliente("Pepe Pepa Peparin", this.direccion, 3125486691)
+        this.cliente2 = new Cliente("Juan Jose Jorge", this.direccion, 3129736654)
         
         let datoRestaurante = {
             nombre: "Spag Heddy",
@@ -25,13 +26,19 @@ class Main{
             direccion: this.direccion
         }
 
-        this.restaurante = new Restaurante(datoRestaurante)
 
         let datosPedido = {
             fecha: new Fecha(new Date(2018,5,25)),
-            hora: new Tiempo(11,23,"am"),
+            hora: new Tiempo(11 , 23, "am"),
             cliente: this.cliente,
             numeroPedido: 10
+        }
+
+        let datosPedido2 = {
+            fecha: new Fecha(new Date(2017,2,13)),
+            hora: new Tiempo(5, 50, "pm"),
+            cliente: this.cliente2,
+            numeroPedido: 15
         }
 
         let datosClienteFrecuente = {
@@ -43,8 +50,11 @@ class Main{
         }
 
         this.pedido = new Pedido(datosPedido)
+        this.pedido2 = new Pedido(datosPedido2)
 
         this.clienteFrecuente = new ClienteFrecuente(datosClienteFrecuente)
+
+        this.restaurante = new Restaurante(datoRestaurante)
         
         this.pedido.agregarElemento(this.elementoPedido)
         this.pedido.agregarElemento(this.elementoPedido2)
@@ -78,8 +88,22 @@ class Main{
     {
         this.restaurante.registrarProducto(this.producto)
         this.restaurante.registrarProducto(this.producto2)
+
+        //test "no registro el mismo pedido 2 veces"
         console.log(this.restaurante.registrarPedido(this.pedido))
         console.log(this.restaurante.registrarPedido(this.pedido))
+
+        //test "elimino el pedido exitosamente"
+        console.log(this.restaurante.eliminarPedido(this.pedido))
+
+        //test "no encuentro el pedido y regreso false"
+        console.log(this.restaurante.eliminarPedido(this.pedido))
+
+        //test "despues de eliminarlo agrego otro pedido"
+        console.log(this.restaurante.registrarPedido(this.pedido))
+
+        //test "modificar pedido"
+        console.log(this.restaurante.modificarPedido(this.pedido, this.pedido2))
 
         this.restaurante.listarProductos()
         this.restaurante.listarPedidos()

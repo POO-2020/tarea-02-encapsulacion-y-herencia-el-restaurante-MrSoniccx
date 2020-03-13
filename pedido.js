@@ -48,8 +48,6 @@ export default class Pedido {
     }
 
     _esIgualA(pedido){
-        console.log(pedido.getNumeroPedido())
-        console.log(this._numeroPedido)
         if(pedido.getNumeroPedido() == this._numeroPedido){ return true}
         else {return false}
     }

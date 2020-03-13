@@ -16,13 +16,12 @@ export default class Restaurante{
     }
     registrarPedido(pedido){
        
-       let found = this._pedidos.find(ped => ped._esIgualA(pedido))
+       let found = this.buscarPedido(pedido)
       
-       console.log(found)
-        if(found != undefined){return false}
+        if(found == null){this._pedidos.push(pedido)
+            return true}
         else
-        {this._pedidos.push(pedido)
-        return true}
+        {return false}
 
         
     }
@@ -41,12 +40,26 @@ export default class Restaurante{
     }
     
     buscarPedido(pedido){
-
+        let buscar = this._pedidos.find(ped => ped._esIgualA(pedido))
+        if(buscar == undefined){return null}
+        else {return buscar}
     }
     eliminarPedido(pedido){
-
+        let found =  this.buscarPedido(pedido)
+        if(found == null) return false
+        else {
+        let i = this._pedidos.indexOf(found)
+        this._pedidos.splice(i,1)
+        return true
+        }
     }
-    modificarPedido(pedido){
-
+    modificarPedido(pedido, nuevoPedido){
+        let found =  this.buscarPedido(pedido)
+        if(found == null) return false
+        else {
+        let i = this._pedidos.indexOf(found)
+        this._pedidos[i] = nuevoPedido
+        return true
+        }
     }
 }
